@@ -87,9 +87,31 @@ public class Main {
 	 */
 	public static int toi4() {
 		// 回答番号
-		int answer = 0;
+				int answer = 0;
+				// 解答欄
+				String[] kaitouList = new String[] { "1:クラスA", "2:クラスB", "3:クラスC", "4:クラスD" };
 
-		return answer;
+				// 質問内容を表示
+				System.out.println("問4");
+				System.out.println("IPv4アドレス 128.0.0.0 を含むアドレスクラスはどれか。");
+
+				// 解答欄を表示
+				for (int i = 0; i < kaitouList.length; i++) {
+					System.out.println("" + i + ":" + kaitouList[i]);
+				}
+
+				// ユーザーが答えを入力
+				System.out.println("回答：");
+				answer = Integer.valueOf(scan.next());
+
+				// 回答結果を出力
+				if(answer == 2){
+				System.out.println("正解です");
+				return 1;
+				}else{
+					System.out.println("不正解です");
+					return 0;
+				}
 	}
 
 	/**
