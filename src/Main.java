@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -63,7 +64,36 @@ public class Main {
 	 */
 	public static int toi2() {
 		// 回答番号
+		scan  = new Scanner(System.in);
 		int answer = 0;
+		int ans = 0;
+		boolean flag = true;
+		final int correct = 4;
+		System.out.println("乱数を応用して，求める解や法則性の近似を得る手法はどれか。");
+		System.out.print("1:クラスタ分析法,2:指数平滑法 ,3:デルファイ法 ,4:モンテカルロ法  \n 番号を入力してください：");
+
+		while(flag){
+			try{
+				ans = scan.nextInt();
+				flag = false;
+				if(ans < 1 || ans > 4){
+					System.out.print("１～4のどれかを選んでください\n番号を入力してください：");
+					flag = true;
+				}
+			}catch(InputMismatchException e){
+				System.out.print("１～4のどれかを選んでください\n番号を入力してください：");
+				flag = true;
+			}
+		}
+		if(ans == correct){
+			System.out.println("正解です");
+			answer += 1;
+		}else{
+			System.out.println("不正解です");
+			System.out.println("正解は4:モンテカルロ法でした。");
+			answer += 0;
+		}
+
 
 		return answer;
 	}
