@@ -175,7 +175,17 @@ public class Main {
 	public static int toi5() {
 		// 回答番号
 		int answer = 0;
-
+		System.out.println("SWOT分析を用いて識別した，自社製品に関する外部要因はどれか。");
+		System.out.println("1:営業力における強み  2:機能面における強み 3:新規参入における脅威  4:品質における弱み");
+		System.out.println("回答:");
+		int a = scan.nextInt();
+		if(a == 3){
+			System.out.println("正解!!");
+			answer = 1;
+		}
+		else{
+			System.out.println("不正解!!  答えは3でした！");
+		}
 		return answer;
 	}
 
