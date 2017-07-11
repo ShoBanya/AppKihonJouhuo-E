@@ -1,6 +1,8 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+	static int score = 0;
 
 	private static Scanner scan;
 
@@ -21,10 +23,13 @@ public class Main {
 		ansers[2] = toi3();// 問3の回答結果
 		ansers[3] = toi4();// 問4の回答結果
 		ansers[4] = toi5();// 問5の回答結果
-		ansers[5] = toi6();// 問6の回答結果
+		//ansers[5] = toi6();// 問6の回答結果
 
 		// それぞれの回答結果のまとめ処理
-
+		for(int i = 0;i < ansers.length;i++){
+			score += ansers[i];
+		}
+		System.out.println("正解数は" + score + "です！");
 	}
 
 	/**
@@ -36,24 +41,31 @@ public class Main {
 		// 回答番号
 		int answer = 0;
 		// 解答欄
-		String[] kaitouList = new String[] { "犬派", "猫派", "サーバルキャット派" };
+		String[] kaitouList = new String[] { "1:再帰的(リカーシブ)", "2:再使用可能(リユーザブル)", "3:再入可能(リエントラント)","4:再配置可能(リロケータブル)" };
 
 		// 質問内容を表示
 		System.out.println("問1");
-		System.out.println("あなたは犬派ですか？それとも猫派ですか？");
+		System.out.println("処理が終了していないプログラムが，別のプログラムから再度呼び出されることがある。");
+        System.out.println("このプログラムが正しく実行されるために備えるべき性質はどれか。");
 
 		// 解答欄を表示
 		for (int i = 0; i < kaitouList.length; i++) {
-			System.out.println("" + i + ":" + kaitouList[i]);
+			System.out.println(kaitouList[i]);
 		}
 
 		// ユーザーが答えを入力
 		System.out.println("回答：");
-		answer = Integer.valueOf(scan.next());
-
+		int num = scan.nextInt();
+		if(num == 3){
+			System.out.println("正解です!");
+			answer = 1;
+		}
+		else{
+			System.out.println("不正解です！　答えは3:再入可能(リエントラント)");
+			 //answer = 0;
+		}
 		// 回答結果を出力
-		System.out.println("「" + kaitouList[answer] + "」が選択されました。");
-		return answer;
+                return answer;
 	}
 
 	/**
@@ -63,7 +75,36 @@ public class Main {
 	 */
 	public static int toi2() {
 		// 回答番号
+		scan  = new Scanner(System.in);
 		int answer = 0;
+		int ans = 0;
+		boolean flag = true;
+		final int correct = 4;
+		System.out.println("乱数を応用して，求める解や法則性の近似を得る手法はどれか。");
+		System.out.print("1:クラスタ分析法,2:指数平滑法 ,3:デルファイ法 ,4:モンテカルロ法  \n 番号を入力してください：");
+
+		while(flag){
+			try{
+				ans = scan.nextInt();
+				flag = false;
+				if(ans < 1 || ans > 4){
+					System.out.print("１～4のどれかを選んでください\n番号を入力してください：");
+					flag = true;
+				}
+			}catch(InputMismatchException e){
+				System.out.print("１～4のどれかを選んでください\n番号を入力してください：");
+				flag = true;
+			}
+		}
+		if(ans == correct){
+			System.out.println("正解です");
+			answer += 1;
+		}else{
+			System.out.println("不正解です");
+			System.out.println("正解は4:モンテカルロ法でした。");
+			answer += 0;
+		}
+
 
 		return answer;
 	}
@@ -77,6 +118,18 @@ public class Main {
 		// 回答番号
 		int answer = 0;
 
+		System.out.println("\n2進数(0111)を10進数に変換しなさい");
+		System.out.print("回答：");
+		int num = scan.nextInt();
+
+		if(num == 7) {
+			System.out.println("正解！");
+			answer = 1;
+		}else {
+			System.out.println("不正解... 【答え：7】");
+			answer = 0;
+		}
+
 		return answer;
 	}
 
@@ -87,9 +140,31 @@ public class Main {
 	 */
 	public static int toi4() {
 		// 回答番号
-		int answer = 0;
+				int answer = 0;
+				// 解答欄
+				String[] kaitouList = new String[] { "1:クラスA", "2:クラスB", "3:クラスC", "4:クラスD" };
 
-		return answer;
+				// 質問内容を表示
+				System.out.println("問4");
+				System.out.println("IPv4アドレス 128.0.0.0 を含むアドレスクラスはどれか。");
+
+				// 解答欄を表示
+				for (int i = 0; i < kaitouList.length; i++) {
+					System.out.println("" + i + ":" + kaitouList[i]);
+				}
+
+				// ユーザーが答えを入力
+				System.out.println("回答：");
+				answer = Integer.valueOf(scan.next());
+
+				// 回答結果を出力
+				if(answer == 2){
+				System.out.println("正解です");
+				return 1;
+				}else{
+					System.out.println("不正解です");
+					return 0;
+				}
 	}
 
 	/**
@@ -100,7 +175,17 @@ public class Main {
 	public static int toi5() {
 		// 回答番号
 		int answer = 0;
-
+		System.out.println("SWOT分析を用いて識別した，自社製品に関する外部要因はどれか。");
+		System.out.println("1:営業力における強み  2:機能面における強み 3:新規参入における脅威  4:品質における弱み");
+		System.out.println("回答:");
+		int a = scan.nextInt();
+		if(a == 3){
+			System.out.println("正解!!");
+			answer = 1;
+		}
+		else{
+			System.out.println("不正解!!  答えは3でした！");
+		}
 		return answer;
 	}
 
