@@ -118,6 +118,18 @@ public class Main {
 		// 回答番号
 		int answer = 0;
 
+		System.out.println("\n2進数(0111)を10進数に変換しなさい");
+		System.out.print("回答：");
+		int num = scan.nextInt();
+
+		if(num == 7) {
+			System.out.println("正解！");
+			answer = 1;
+		}else {
+			System.out.println("不正解... 【答え：7】");
+			answer = 0;
+		}
+
 		return answer;
 	}
 
